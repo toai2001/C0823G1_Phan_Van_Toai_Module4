@@ -19,8 +19,7 @@ public class DictionaryController {
     ModelAndView showHome() {
         return new ModelAndView("/index");
     }
-
-    @GetMapping("/convert")
+    @GetMapping("/transalte")
     public ModelAndView display(Model model, String eng) {
         model.addAttribute("eng", eng);
         model.addAttribute("vi", iDictionaryService.display(eng));
