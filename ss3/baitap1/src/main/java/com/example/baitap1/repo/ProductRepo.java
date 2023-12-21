@@ -18,7 +18,6 @@ public class ProductRepo implements IProductRepo {
         products.add(new Product(4, "Iphone XS Max", "Iphone XS Max Mau Trang 128GB Moi 100%", 800l,"Apple"));
         products.add(new Product(5, "Iphone 15 Pro Max", "Iphone 15 Pro Max Mau Trang 256GB Moi 100%", 18000l,"Apple"));
     }
-
     @Override
     public List<Product> showProduct() {
         return products;

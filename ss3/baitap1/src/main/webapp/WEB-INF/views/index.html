@@ -51,10 +51,10 @@
     <tbody>
     <tr th:each="product,loop : ${products}">
       <th th:text="${loop.count}" scope="row">1</th>
-      <td th:text="${product.name}">Mark</td>
-      <td th:text="${product.description}">Otto</td>
-      <td th:text="${product.price +' usd'}">@mdo</td>
-      <td th:text="${product.producer}">@mdo</td>
+      <td th:text="${product.name}"></td>
+      <td th:text="${product.description}"></td>
+      <td th:text="${product.price +' usd'}"></td>
+      <td th:text="${product.producer}"></td>
       <td><a role="button" class="btn btn-primary" th:href="@{/product/__${product.id}__/view}">View</a></td>
       <td><a role="button" class="btn btn-warning" th:href="@{/product/__${product.id}__/edit}">Edit</a></td>
       <td>
