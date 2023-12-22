@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Exercise</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<header class="p-3 mb-3 border-bottom">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
+        <li><a th:href="@{/student/add}" class="nav-link px-2 link-body-emphasis">Add Student</a></li>
+      </ul>
+
+      <form action="/student/search" method="post" class="row g-2">
+        <div class="col-auto">
+          <label for="inputSearch" class="visually-hidden">Password</label>
+          <input type="text" class="form-control" id="inputSearch" name="name-search" placeholder="Input Name Student">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</header>
+<body>
+<div class="container">
+  <h2 class="my-5">Add new Student</h2>
+  <form method="post" th:object="${student}">
+    <div class="row">
+<!--      <div class="mb-3">-->
+<!--        <label for="idStudent" class="form-label">ID Student</label>-->
+<!--        <input th:field="${student.id}" type="number" class="form-control" id="idStudent"-->
+<!--               placeholder="Input ID Student">-->
+<!--      </div>-->
+      <div class="mb-3">
+        <label for="nameStudent" class="form-label">Name Student</label>
+        <input type="text" th:field="${student.name}" class="form-control" id="nameStudent">
+      </div>
+      <div class="mb-3">
+<!--        <label for="descriptionProduct" class="form-label">Description</label>-->
+<!--        <textarea th:field="${product.description}" class="form-control" id="descriptionProduct"-->
+<!--                  rows="3"></textarea>-->
+        <select th:field="*{gender}">
+          <option value="Nam">Nam</option>
+          <option value="Nữ">Nữ</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="ageStudent" class="form-label">Age</label>
+        <input type="number" th:field="${student.age}" class="form-control" id="ageStudent">
+      </div>
+      <div class="mb-3">
+        <label for="addressStudent" class="form-label">Address</label>
+        <input type="text" th:field="${student.address}" class="form-control" id="addressStudent">
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Add Student</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
