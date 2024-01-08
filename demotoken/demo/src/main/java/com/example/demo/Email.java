@@ -13,41 +13,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.UUID;
 
 @Controller
-@RequestMapping
 public class Email {
     @Autowired
-    private JavaMailSender javaMailSender;
+    JavaMailSender javaMailSender;
 
-    @GetMapping("/send-email")
-    public String showEmailForm() {
-        return "email-form";
-    }
-    @PostMapping("/send-email")
-    public String sendEmail(@RequestParam String toEmail,
-                            Model model) {
-        try {
-            // Tạo mã xác nhận ngẫu nhiên
-            String confirmationCode = UUID.randomUUID().toString();
-
-            // Gửi email
-            sendConfirmationEmail(toEmail, confirmationCode);
-
-            // Gửi mã xác nhận về cho view để hiển thị
-            model.addAttribute("confirmationCode", confirmationCode);
-            return "confirmation-success";
-        } catch (Exception e) {
-            e.printStackTrace();
-            model.addAttribute("result", "Error sending email.");
-            return "email-form";
-        }
+    @GetMapping("")
+    public String show() {
+        return "FormSendMail";
     }
 
-    private void sendConfirmationEmail(String toEmail, String confirmationCode) {
+    @PostMapping("/send")
+    public String sendMail(@RequestParam(value = "to") String to) {
+        String subject = "GỬi link";
+        String content = "http://localhost:8080/result";
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(toEmail);
-        message.setSubject("Xác nhận địa chỉ email");
-        message.setText("Mã xác nhận của bạn: " + confirmationCode);
-
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(content);
         javaMailSender.send(message);
+        return "result";
     }
 }
