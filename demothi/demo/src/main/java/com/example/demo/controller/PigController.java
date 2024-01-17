@@ -62,11 +62,4 @@ public class PigController {
     public ModelAndView viewDetailPig(@PathVariable Integer id){
         return new ModelAndView("view","pig", iPig.findPigById(id));
     }
-//    @PostMapping("/pig/search")
-//    public ModelAndView searchByTenLon(
-//            @RequestParam(value = "tenLonSearch", defaultValue = "") String tenLonSearch,
-//            @PageableDefault(value = 2, sort = "tenLon", direction = Sort.Direction.DESC) Pageable pageable, Model model) {
-//        model.addAttribute("tenLonSearch", tenLonSearch);
-//        return new ModelAndView("list", "pigs", iPig.searchPigByTenLonContaining(tenLonSearch, pageable));
-//    }
 }

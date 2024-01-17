@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercise</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<header class="p-3 mb-3 border-bottom">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/student/list" class="nav-link px-2 link-secondary">Home</a></li>
+                <li><a th:href="@{/student/add}" class="nav-link px-2 link-body-emphasis">Add Student</a></li>
+                <li><a th:href="@{/student/list}" class="nav-link px-2 link-body-emphasis">Manage Student</a></li>
+                <li><a th:href="@{/class/list}" class="nav-link px-2 link-body-emphasis">Manage Class</a></li>
+            </ul>
+
+            <form action="/student/list" method="get" class="row g-2">
+                <div class="col-auto">
+                    <label for="inputSearch" class="visually-hidden">Password</label>
+                    <input type="text" class="form-control" id="inputSearch" name="nameSearch"
+                           placeholder="Input Pig ">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Tìm Kiếm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</header>
+<body>
+<div class="container">
+    <a class="btn btn-primary my-3" th:href="@{/student/list}" role="button">Trở Về</a>
+    <table class="table mt-3">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tên Học Sinh</th>
+            <th scope="col">Tuổi </th>
+            <th scope="col">Giới Tính </th>
+            <th scope="col"> Cân Nặng (kg)</th>
+            <th scope="col"> Chiều Cao (cm)</th>
+            <th scope="col"> Lớp</th>
+<!--            <th scope="col" colspan="3">Action</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student,loop : ${student}">
+            <th th:text="${loop.count}" scope="row">1</th>
+            <td th:text="${student.name}">Mark</td>
+            <td th:text="${student.age}">Mark</td>
+            <td th:text="${student.gender}">Mark</td>
+            <td th:text="${student.weight}">Mark</td>
+            <td th:text="${student.height}">Mark</td>
+            <td th:text="${student.classRoom.nameClass}">KG</td>
+        </tbody>
+    </table>
+<!--    <div th:object="${student}" class="row my-5">-->
+<!--        <h1 th:text="${pig.tenLon}" class="bd-title mb-0" id="content"></h1>-->
+<!--        <p class="blog-post-meta">tên Lợn <a th:text="${pig.tenLon}" href="#">Mark</a>-->
+<!--            Chuồng: <a th:text="${pig.cage.loaiCuong}" th:href="@{/cage/__${pig.cage.id}__/view}">Mark</a></p>-->
+<!--        <p th:text="${pig.tuoi}"></p>-->
+<!--        <p th:text="${pig.gioiTinh}"></p>-->
+<!--        <div th:text="${pig.trongLuong}">Kg</div>-->
+<!--        <div th:text="${pig.gioiTinh}"></div>-->
+<!--    </div>-->
+</div>
+</body>
+</html>
